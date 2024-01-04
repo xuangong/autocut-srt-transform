@@ -1,7 +1,7 @@
 import os
 import re
 
-g_n = 5 # Number of seconds to add to each subtitle
+g_n = 10 # Number of seconds to add to each subtitle
 
 def convert_to_srt(file_content):
     lines = file_content.split('\n')
@@ -21,7 +21,7 @@ def convert_to_srt(file_content):
         subtitle_text = ' '.join(parts[2].split(' ')[1:]).strip()
 
         # Skip '< No Speech >' subtitles
-        if subtitle_text == "< No Speech >":
+        if "No Speech >" in subtitle_text or subtitle_text.strip() == "":
             continue
 
         _, time = index_and_time.split(',')[0], index_and_time.split(',')[1]
